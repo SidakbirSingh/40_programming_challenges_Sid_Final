@@ -843,6 +843,74 @@ for i in range(0,10):
 print('Your score was= ',sum(scores),'out of 10!')
 
 
+#LEVEL 10 CHALLENGE
+#C40
+
+#importing random module
+import random
+#all the vars defined
+wrong_answers=0
+wrong_answers_limit=3
+correct_answers=0
+#limit var (for randint max value)
+limit=10
+#level var
+level=1
+#intro to game and rules
+print('Hello! \nWelcome to a number guessing game! \nRULES:\n1.You will have three lives to guess my number 0-10 in Level 1\n2.You need to guess the number correct 3 times to go to the next level \n3.If you get the answer wrong 3 times you lose\n4.Next level your end limit will increase by 5 Eg. 10 -> 15\n5.Every new level your lives/wrong answer allowance will increase by 3 \n6.There are 4 levels(limit would go upto 25)')
+#var declared which will not change
+i=0
+#forever loop
+while i<10 :
+    #generates a random int until the limit that changes if the level goes up
+    random_number=random.randint(0,limit)
+    #tells the user the limit/ boundary
+    print('Enter a number from 0-',limit)
+
+    ##print(random_number)
+    #if statement using modulus to determine if the random num is odd or even to give the user a hint
+    if random_number%2==0:
+        print('Hint: It is even!')
+    else:
+        print('Hint: It is odd!')
+    #asking the user for the answer
+    user_answer=int(input('Ans= '))
+    #determines is the answer is correct
+    if user_answer==random_number:
+        print('Well done you got it correct!')
+        correct_answers+=1
+    #if wrong says try again, deducts lives and prints the total lives
+    else:
+        print('Try again! The number was',random_number)
+        wrong_answers+=1
+        print('You have',wrong_answers_limit-wrong_answers,'lives left')
+    
+    #finishing the game or next level
+    if correct_answers==3:
+        level+=1
+        if limit==25 :
+            print('You have finished the game! Thanks for playing!\nYour level was',level-1)
+
+            break
+        #next level
+        else:
+            print('Well done! 3 correct! Next Level',level)
+            correct_answers=0
+            wrong_answers=0
+            wrong_answers_limit+=2
+            limit+=5
+    #command if you lose, shows the level
+    if wrong_answers==wrong_answers_limit:
+        print('You lose! Level=',level)
+        break
+        
+    
+##ALL DONE!!! FINALLYYY
+        
+    
+
+
+
 
 
 
